@@ -1,0 +1,29 @@
+﻿@page "/"
+@using Core.ViewModels
+
+<h1>Hello, world!</h1>
+
+Welcome to your new app.
+
+<SurveyPrompt Title="How is Blazor working for you?" />
+
+<EditForm EditContext="@editContext" Model="@viewModel" OnValidSubmit="Submit">
+    <p>
+        <label>
+            User:<br />
+            <InputText @bind-Value="viewModel.User" />
+        </label>
+    </p>
+    <p>
+        <label>
+            Password:<br />
+            <InputText @bind-Value="viewModel.Password" type="password" />
+        </label>
+    </p>
+    <p>
+        <span style="color:red">@viewModel.ValidationSumary</span>
+        <br />
+        @viewModel.Messagge
+    </p>
+    <button type="submit" disabled="@(!viewModel.LoginCommand.CanExecuteIsEnabled)">Login</button>
+</EditForm>
